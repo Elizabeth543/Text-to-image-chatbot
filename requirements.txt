@@ -1,0 +1,8 @@
+django
+torch 
+diffusers
+accelerate
+transformers
+Pillow
+requests
+gunicorn
