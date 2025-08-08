@@ -17,7 +17,7 @@ pipe = StableDiffusionPipeline.from_pretrained(
 
 
 # ===== GOOGLE GEMINI SETUP =====
-API_KEY = 'AIzaSyD2nwE01s4P8K2XpCT8gJ-jAvd1Hxf8u0I'  # replace with your key
+API_KEY = os.getenv("GEMINI_API_KEY")  # replace with your key
 MODEL = 'gemini-2.0-flash'
 API_URL = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={API_KEY}'
 # ===== IMAGE GENERATION VIEW =====
@@ -91,5 +91,6 @@ def chatbot(request):
 
             chat_history.append({"user": user_input, "bot": bot_reply})
             request.session["chat_history"] = chat_history
+
 
     return render(request, "chatbot.html", {"chat_history": chat_history})
